@@ -1,0 +1,45 @@
+{% extends 'newsAdmin/base.html' %}
+{% block content %}
+<style>
+  #desc{
+    width:20%;
+  }
+  table{
+    max-width: 100%;
+  }
+</style>
+<div class="main-content" id="main-content">
+  <div class="row">
+      <table>
+        <thead>
+          <tr>
+            <th>S.N</th>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Demo Data -->
+          {% for category in categories %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td><i class="{{ category.icon }}"></i></td>
+                        <td>{{ category.name }}</td>
+                        <td id="desc">{{ category.description }}</td>
+                        <td>
+                          <a href="#" class="btn btn-success">Edit</a>
+                          <a href="#" class="btn btn-danger">Delete</a>
+
+
+                        </td>
+                        
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>  
+  </div>
+</div>
+
+{% endblock content %}

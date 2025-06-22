@@ -1,0 +1,162 @@
+/* Base Layout */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f4f9;
+}
+
+/* Sidebar Wrapper */
+.left {
+  width: 250px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #1d3557;
+  color: white;
+  transition: transform 0.3s ease;
+  z-index: 100;
+}
+
+/* Hide sidebar */
+.left.hidden {
+  transform: translateX(-100%);
+}
+
+/* Main Content */
+.right {
+  margin-left: 250px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.left.hidden + .right {
+  margin-left: 0;
+}
+
+/* Sidebar contents */
+.sidebar {
+  padding: 1rem;
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 1rem 0;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+  background-color: #457b9d;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 101;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.toggle-btn:hover {
+  background-color: #457b9d;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .right {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .toggle-btn {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table thead {
+  background-color: #1d3557;
+  color: white;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  margin-right: 0.5rem;
+  transition: all 0.3s;
+}
+
+.btn-warning {
+  background-color: #ffa726;
+}
+
+.btn-danger {
+  background-color: #e53935;
+}
+
+.btn-success {
+  background-color: #43a047;
+}
+
+#createForm {
+  padding: 4%;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 20px 20px 50px grey;
+
+}

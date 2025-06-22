@@ -1,0 +1,55 @@
+{% extends "newsAdmin/base.html" %}
+{% load static %}
+{% block content %}
+    <!-- Main Content -->
+    <div class="main-content" id="main-content">
+        <header>
+            Manage Your Dashboard
+        </header>
+        <h2>Post List</h2>
+        <a href="{% url 'superNewsAdmin:createPost' %}" class="btn btn-success">Add New Post</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Featured Image</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Tags</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Demo Data -->
+                {% for post in posts %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+
+
+                        <td>
+                            <img src="{{ post.featured_image.url }}"
+                                 alt="{{ post.title }}"
+                                 height="40"
+                                 width="40"
+                                 class="featured-image">
+                        </td>
+                        <td>{{ post.title }}</td>
+                        <td>{{ post.category }}</td>
+                        <td>{{ post.tag }}</td>
+                        <td>
+                            <a href="{% url 'superNewsAdmin:post-edit' post.pk %}" class="btn btn-success">Edit</a>
+                            <form action="{% url 'superNewsAdmin:post-delete' post.pk %}"
+                                  method="post"
+                                  style="display:inline;"
+                                  onsubmit="return confirm('Are you sure you want to delete this post?');">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% include "newsAdmin/pagination.html" %}
+    </div>
+{% endblock content %}

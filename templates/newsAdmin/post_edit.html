@@ -1,0 +1,76 @@
+{% extends "newsAdmin/base.html" %}
+
+{% block content %}
+<style>
+
+</style>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <h2 class="mb-4 text-center">{{ form.instance.pk|yesno:"Edit Post,Create Post" }}</h2>
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <form id="createForm" action="{% url 'superNewsAdmin:createPost' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    {{ form.title }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Content</label>
+                    {{ form.content }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Featured Image</label>
+                    {{ form.featured_image }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Author</label>
+                    {{ form.author }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Status</label>
+                    {{ form.status }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Published At:</label>
+                    {{ form.published_at }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    {{ form.category }}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tag</label>
+                    {{ form.tag }}
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{% url 'superNewsAdmin:home' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
