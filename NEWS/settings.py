@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'accounts',
     'API',
     'rest_framework',
+    'django_summernote',
     'superNewsAdmin',
 ]
 
